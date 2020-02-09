@@ -21,6 +21,8 @@ type expr
   | MinusExpr of loc * expr * expr
   | EqualsExpr of loc * expr * expr
   | NeqExpr of loc * expr * expr
+  | AndExpr of loc * expr * expr
+  | OrExpr of loc * expr * expr
   | LambdaExpr of loc * int * expr array * expr
   | CallExpr of loc * expr * expr array
 

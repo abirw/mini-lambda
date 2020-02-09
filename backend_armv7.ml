@@ -69,6 +69,8 @@ let compile_closure out { id; num_params; num_locals; name; insts; _ } =
     | Minus -> failwith ("Unable to use Subtract");
     | Equals -> failwith ("Unable to use Equals");
     | Neq -> failwith ("Unable to use NEQ");
+    | And -> failwith ("Unable to use And");
+    | Or -> failwith ("Unable to use Or");
     | Call ->
       Printf.fprintf out "\tpop {r0}\n";
       Printf.fprintf out "\tldr r1, [r0]\n";

@@ -50,6 +50,10 @@ let lower program =
           Ir.Equals :: lower_expr (lower_expr acc lhs) rhs
         | NeqExpr(_, lhs, rhs) -> 
           Ir.Neq :: lower_expr (lower_expr acc lhs) rhs
+        | AndExpr(_, lhs, rhs) -> 
+          Ir.And :: lower_expr (lower_expr acc lhs) rhs
+        | OrExpr(_, lhs, rhs) -> 
+          Ir.Or :: lower_expr (lower_expr acc lhs) rhs
         | LambdaExpr(_, num_params, env, body) ->
           (* Create a new closure from the body. *)
           let id = new_id() in

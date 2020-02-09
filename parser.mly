@@ -15,6 +15,8 @@ open Ast
 %token MINUS
 %token EQUALS
 %token NEQ
+%token AND
+%token OR
 %token LPAREN RPAREN LBRACE RBRACE
 %token FUNC
 %token RETURN
@@ -62,6 +64,10 @@ expr:
   | lhs = expr; EQUALS; rhs = unary_expr
     { EqualsExpr($startpos, lhs, rhs) }
   | lhs = expr; NEQ; rhs = unary_expr
+    { NeqExpr($startpos, lhs, rhs) }
+  | lhs = expr; AND; rhs = unary_expr
+    { NeqExpr($startpos, lhs, rhs) }
+  | lhs = expr; OR; rhs = unary_expr
     { NeqExpr($startpos, lhs, rhs) }
 
 unary_expr:

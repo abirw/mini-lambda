@@ -76,6 +76,12 @@ let compile_closure out { id; num_params; num_locals; name; insts; _ } =
       Printf.fprintf out "\tcmpq %%rcx, (%%rsp)\n";
       Printf.fprintf out "\tandq %%rsp, 0\n";
       Printf.fprintf out "\tsetne %%rsp \n"
+    | And -> 
+      Printf.fprintf out "\tpopq %%rcx\n";
+      Printf.fprintf out "\tandq %%rsp, %%rcx\n"
+    | Or -> 
+      Printf.fprintf out "\tpopq %%rcx\n";
+      Printf.fprintf out "\torq %%rsp, %%rcx\n"
     | Call ->
       Printf.fprintf out "\tpopq %%rax\n";
       Printf.fprintf out "\tcallq *(%%rax)\n";
