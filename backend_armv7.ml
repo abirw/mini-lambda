@@ -66,7 +66,8 @@ let compile_closure out { id; num_params; num_locals; name; insts; _ } =
       Printf.fprintf out "\tpop {r2}\n";
       Printf.fprintf out "\tadd r1, r1, r2\n";
       Printf.fprintf out "\tpush {r1}\n";
-    | Minus -> failwith ("Unable to use subtract");
+    | Minus -> failwith ("Unable to use Subtract");
+    | Equals -> failwith ("Unable to use Equals");
     | Call ->
       Printf.fprintf out "\tpop {r0}\n";
       Printf.fprintf out "\tldr r1, [r0]\n";
