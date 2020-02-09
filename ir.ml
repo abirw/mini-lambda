@@ -37,8 +37,11 @@ type inst
   | Minus
   (* Pops two values and pushes their equality *)
   | Equals
+  (* Pops two values and pushes the inverse of their equality *)
   | Neq
+  (* Pops two boolean values and pushes their and *)
   | And
+  (* Pops two boolean values and pushes their or *)
   | Or
   (* Pops a closure and invokes it. *)
   | Call
