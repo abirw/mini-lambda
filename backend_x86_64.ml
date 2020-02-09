@@ -68,9 +68,14 @@ let compile_closure out { id; num_params; num_locals; name; insts; _ } =
       Printf.fprintf out "\tsubq %%rcx, (%%rsp)\n"
     | Equals -> 
       Printf.fprintf out "\tpopq %%rcx\n";
-      Printf.fprintf out "\tcmpq %%rcx, (%%rsp)\n"
-      Printf.fprintf out "\tandq %%rsp, 0\n"
+      Printf.fprintf out "\tcmpq %%rcx, (%%rsp)\n";
+      Printf.fprintf out "\tandq %%rsp, 0\n";
       Printf.fprintf out "\tsete %%rsp \n"
+    | Neq -> 
+      Printf.fprintf out "\tpopq %%rcx\n";
+      Printf.fprintf out "\tcmpq %%rcx, (%%rsp)\n";
+      Printf.fprintf out "\tandq %%rsp, 0\n";
+      Printf.fprintf out "\tsetne %%rsp \n"
     | Call ->
       Printf.fprintf out "\tpopq %%rax\n";
       Printf.fprintf out "\tcallq *(%%rax)\n";

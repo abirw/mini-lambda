@@ -14,6 +14,7 @@ open Ast
 %token PLUS
 %token MINUS
 %token EQUALS
+%token NEQ
 %token LPAREN RPAREN LBRACE RBRACE
 %token FUNC
 %token RETURN
@@ -60,6 +61,8 @@ expr:
     { MinusExpr($startpos, lhs, rhs) }
   | lhs = expr; EQUALS; rhs = unary_expr
     { EqualsExpr($startpos, lhs, rhs) }
+  | lhs = expr; NEQ; rhs = unary_expr
+    { NeqExpr($startpos, lhs, rhs) }
 
 unary_expr:
   | LAMBDA

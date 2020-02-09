@@ -48,6 +48,8 @@ let lower program =
           Ir.Minus :: lower_expr (lower_expr acc lhs) rhs
         | EqualsExpr(_, lhs, rhs) -> 
           Ir.Equals :: lower_expr (lower_expr acc lhs) rhs
+        | NeqExpr(_, lhs, rhs) -> 
+          Ir.Neq :: lower_expr (lower_expr acc lhs) rhs
         | LambdaExpr(_, num_params, env, body) ->
           (* Create a new closure from the body. *)
           let id = new_id() in

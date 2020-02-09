@@ -37,6 +37,7 @@ type inst
   | Minus
   (* Pops two values and pushes their equality *)
   | Equals
+  | Neq
   (* Pops a closure and invokes it. *)
   | Call
   (* Pops a return value and returns. *)
@@ -69,6 +70,7 @@ let print_inst out inst =
   | Add           -> Printf.fprintf out "\tAdd\n"
   | Minus         -> Printf.fprintf out "\tMinus\n"
   | Equals        -> Printf.fprintf out "\tEquals\n"
+  | Neq           -> Printf.fprintf out "\tNeq\n"
   | Call          -> Printf.fprintf out "\tInvoke\n"
   | Return        -> Printf.fprintf out "\tReturn\n"
   | Pop           -> Printf.fprintf out "\tPop\n"
